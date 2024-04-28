@@ -118,7 +118,8 @@ celerybeat.pid
 
 # SageMath parsed files
 *.sage.py
-
+.keras
+.pki
 # Environments
 .env
 .venv
