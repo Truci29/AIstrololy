@@ -1,4 +1,5 @@
-[
+{"intents":
+    [
     {
       "tag": "love_compatibility",
       "patterns": ["love", "relationship", "romance", "compatibility", "Aries", "Taurus", "Gemini", "Cancer"],
@@ -40,4 +41,4 @@
       ]
     }
   ]
-  
+}
