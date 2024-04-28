@@ -1,0 +1,43 @@
+[
+    {
+      "tag": "love_compatibility",
+      "patterns": ["love", "relationship", "romance", "compatibility", "Aries", "Taurus", "Gemini", "Cancer"],
+      "responses": [
+        "Les Béliers sont passionnés et énergiques, ce qui peut créer une relation intense. Ils s'entendent bien avec les Lions et les Sagittaires.",
+        "Les Taureaux sont stables et fidèles. Ils sont compatibles avec les signes de terre comme la Vierge et le Capricorne."
+      ]
+    },
+    {
+      "tag": "career_guidance",
+      "patterns": ["career", "work", "profession", "job", "Leo", "Virgo", "Libra", "Scorpio"],
+      "responses": [
+        "Les Lions ont des aptitudes naturelles pour des rôles de leadership. Ils prospèrent dans des carrières où ils peuvent briller.",
+        "Les Vierges sont méthodiques et attentives aux détails, ce qui en fait des candidats idéaux pour des carrières nécessitant de la précision."
+      ]
+    },
+    {
+      "tag": "daily_horoscope",
+      "patterns": ["daily horoscope", "today's horoscope", "daily predictions", "Sagittarius", "Capricorn", "Aquarius", "Pisces"],
+      "responses": [
+        "Les Sagittaires peuvent s'attendre à une journée pleine d'opportunités. C'est le moment idéal pour explorer de nouvelles idées.",
+        "Les Capricornes devraient se concentrer sur leurs objectifs à long terme aujourd'hui. Votre détermination vous aidera à surmonter les obstacles."
+      ]
+    },
+    {
+      "tag": "personality_traits",
+      "patterns": ["traits", "characteristics", "personality", "zodiac", "Gemini", "Cancer", "Leo", "Virgo"],
+      "responses": [
+        "Les Gémeaux sont connus pour leur adaptabilité et leur curiosité. Ils aiment la variété et la communication.",
+        "Les Cancers sont sensibles et émotionnels. Ils sont très attachés à leur famille et à leurs proches."
+      ]
+    },
+    {
+      "tag": "astrology_basics",
+      "patterns": ["astrology", "zodiac signs", "birth chart", "horoscope", "Taurus", "Aquarius", "Pisces"],
+      "responses": [
+        "Les signes du zodiaque sont déterminés par la position des étoiles au moment de votre naissance. Les Taureaux sont des signes de terre, tandis que les Verseaux sont des signes d'air.",
+        "Chaque signe du zodiaque a ses propres caractéristiques et influences. Les Poissons, par exemple, sont des signes d'eau et ont tendance à être très créatifs."
+      ]
+    }
+  ]
+  
