@@ -3,73 +3,81 @@ import random
 import json
 import pickle
 import numpy as np
-
 import nltk
 from nltk.stem import WordNetLemmatizer
-
 from tensorflow.keras.models import load_model
 
-# Load pre-trained components
+# Initialize lemmatizer and load pre-trained components
 lemmatizer = WordNetLemmatizer()
-intents = json.loads(open('data.json').read())
-words = pickle.load(open("words.pkl", 'rb'))
-classes = pickle.load(open("classes.pkl", 'rb'))
+intents = json.loads(open("data.json").read())
+words = pickle.load(open("words.pkl", "rb"))
+classes = pickle.load(open("classes.pkl", "rb"))
 model = load_model("chatbot_model.model.keras")
 
 # Utility functions to clean input and create bag of words
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
-    sentence_words = [lemmatizer.lemmatize(word) for word in sentence_words]
+    sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
     return sentence_words
 
 def bag_of_words(sentence):
     sentence_words = clean_up_sentence(sentence)
+    print(f"Tokenized and lemmatized words: {sentence_words}")
+
     bag = [0] * len(words)
     for w in sentence_words:
-        for i, word in enumerate(words):
-            if word == w:
-                bag[i] = 1
+        if w in words:
+            index = words.index(w)
+            bag[index] = 1
+            print(f"Word '{w}' found at index {index}")
+        else:
+            print(f"Word '{w}' not in vocabulary")
+
     return np.array(bag)
 
 def predict_class(sentence):
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
-    ERROR_THRESHOLD = 0.25
+    
+    ERROR_THRESHOLD = 0.15  # Try reducing to allow more intents to be detected
+    
     results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
     results.sort(key=lambda x: x[1], reverse=True)
-    return [{'intent': classes[r[0]], 'probability': r[1]} for r in results]
 
-def get_response(intents_list, intents_json):
-    tag = intents_list[0]['intent']
-    list_of_intents = intents_json['intents']
-    for i in list_of_intents:
-        if i['tag'] == tag:
-            return random.choice(i['responses'])
-    return "I'm not sure I understand. Can you clarify?"
+    if not results:
+        return [{"intent": "fallback", "probability": 1}]
 
-# Feedback storage
-feedback_storage = []
+    return [{"intent": classes[r[0]], "probability": r[1]} for r in results]
 
-# Chat loop with feedback mechanism
-print("Go! The bot is running.")
+def get_combined_response(intents_list, intents_json):
+    relevant_responses = []
+    list_of_intents = intents_json["intents"]
 
-while True:
-    message = input("You: ")
-    prediction = predict_class(message)
-    response = get_response(prediction, intents)
+    for result in intents_list:
+        tag = result["intent"]
+        probability = result["probability"]
+        print(f"Detected intent: {tag} with probability: {probability}")
 
-    print(f"Chatbot: {response}")
+        # Search for the intent in the JSON structure
+        for intent in list_of_intents:
+            if intent["tag"] == tag:
+                if "subtags" in intent:
+                    # Check for subtags and match the tag
+                    for subtag in intent["subtags"]:
+                        if subtag["tag"] == tag:
+                            response = random.choice(subtag["responses"])
+                            relevant_responses.append(response)
+                            print(f"Adding response for subtag '{tag}': {response}")
+                else:
+                    # If no subtags, use the main tag's responses
+                    response = random.choice(intent["responses"])
+                    relevant_responses.append(response)
+                    print(f"Adding response for main tag '{tag}': {response}")
 
-    # Ask for feedback
-    feedback = input("Was this helpful? (yes/no): ")
+    combined_response = " ".join(relevant_responses)
+    print(f"Combined response: {combined_response}")
 
-    # If positive feedback, store the question and response
-    if feedback.lower() == "yes":
-        feedback_storage.append({
-            "question": message,
-            "response": response,
-            "intent": prediction[0]["intent"]
-        })
+    return combined_response
 
 # Update the dataset with new data from feedback
 def update_dataset(feedback_storage, dataset_path="data.json"):
@@ -162,3 +170,67 @@ def retrain_model():
 
     # Save the new model
     model.save("chatbot_model.model.keras")
+
+
+test_queries = [
+    "What's a good career for Virgo?", 
+    "Describe Virgo's personality.", 
+    "What's today's horoscope for Sagittarius?"
+]
+
+for query in test_queries:
+    prediction = predict_class(query)
+    response = get_combined_response(prediction, intents)
+    print(f"Query: {query}")
+    print(f"Prediction: {prediction}")
+    print(f"Response: {response}\n")
+
+print(f"Vocabulary: {words}")
+
+# Example: Finding overlapping patterns in the dataset
+patterns = []
+for intent in intents["intents"]:
+    if "subtags" in intent:
+        for subtag in intent["subtags"]:
+            patterns.extend(subtag["patterns"])
+    else:
+        patterns.extend(intent["patterns"])
+
+# Identify duplicates or very similar patterns
+from collections import Counter
+pattern_counts = Counter(patterns)
+overlapping_patterns = [pattern for pattern, count in pattern_counts.items() if count > 1]
+
+print(f"Overlapping or ambiguous patterns: {overlapping_patterns}")
+
+
+
+# Feedback storage
+feedback_storage = []
+# Main chat loop
+print("Chatbot: Hello! You can start chatting with me. Type 'bye' to exit.")
+
+while True:
+    message = input("You: ")
+    
+    # Check if user wants to exit
+    if message.lower() in ["exit", "quit", "bye"]:
+        print("Chatbot: Goodbye!")
+        break
+    
+    prediction = predict_class(message)
+    response = get_combined_response(prediction, intents)
+
+    # Double-check if response is valid
+    print(f"Chatbot: {response}")  # This should display the response
+
+    # Ask for feedback
+    feedback = input("Was this helpful? (yes/no): ")
+
+    # If positive feedback, store the question and response
+    if feedback.lower() == "yes":
+        feedback_storage.append({
+            "question": message,
+            "response": response,
+            "intent": prediction[0]["intent"]
+        })

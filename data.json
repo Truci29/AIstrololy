@@ -1,43 +1,116 @@
-{"intents":
-    [
+{
+  "intents": [
     {
-      "tag": "love_compatibility",
-      "patterns": ["love", "relationship", "romance", "compatibility", "Aries", "Taurus", "Gemini", "Cancer"],
+      "tag": "personality_traits",
+      "patterns": [
+        "Tell me about zodiac personality traits.",
+        "Describe the personality of zodiac signs.",
+        "How do zodiac signs differ in personality?"
+      ],
       "responses": [
-        "Les Béliers sont passionnés et énergiques, ce qui peut créer une relation intense. Ils s'entendent bien avec les Lions et les Sagittaires.",
-        "Les Taureaux sont stables et fidèles. Ils sont compatibles avec les signes de terre comme la Vierge et le Capricorne."
+        "Each zodiac sign has unique personality traits. For example, Gemini is known for adaptability and curiosity.",
+        "Zodiac signs represent different characteristics. Cancer is sensitive and emotional, while Leo is confident and charismatic."
+      ],
+      "subtags": [
+        {
+          "tag": "Gemini",
+          "patterns": ["What's Gemini like?", "Describe Gemini's personality."],
+          "responses": ["Gemini is adaptable and curious, enjoying variety and communication."]
+        },
+        {
+          "tag": "Cancer",
+          "patterns": ["What's Cancer like?", "Describe Cancer's personality."],
+          "responses": ["Cancer is sensitive and emotional, deeply attached to family and friends."]
+        },
+        {
+          "tag": "Leo",
+          "patterns": ["What's Leo like?", "Describe Leo's personality."],
+          "responses": ["Leo is confident and charismatic, often drawing attention in social settings."]
+        },
+        {
+          "tag": "Virgo",
+          "patterns": ["What's Virgo like?", "Describe Virgo's personality."],
+          "responses": ["Virgo is practical and meticulous, with a strong sense of order and efficiency."]
+        }
       ]
     },
     {
       "tag": "career_guidance",
-      "patterns": ["career", "work", "profession", "job", "Leo", "Virgo", "Libra", "Scorpio"],
+      "patterns": [
+        "Give me career guidance.",
+        "What kind of jobs suit zodiac signs?",
+        "Tell me about careers for zodiac signs."
+      ],
       "responses": [
-        "Les Lions ont des aptitudes naturelles pour des rôles de leadership. Ils prospèrent dans des carrières où ils peuvent briller.",
-        "Les Vierges sont méthodiques et attentives aux détails, ce qui en fait des candidats idéaux pour des carrières nécessitant de la précision."
+        "Each zodiac sign has unique strengths for different careers. Leo is a natural leader, while Virgo is methodical and precise.",
+        "Zodiac signs have specific traits that can guide career choices. For example, Sagittarius thrives in adventurous roles."
+      ],
+      "subtags": [
+        {
+          "tag": "Leo",
+          "patterns": ["What's a good career for Leo?", "Job suggestions for Leo?"],
+          "responses": ["Leo excels in roles that require leadership and confidence."]
+        },
+        {
+          "tag": "Virgo",
+          "patterns": ["What's a good career for Virgo?", "Job suggestions for Virgo?"],
+          "responses": ["Virgo is ideal for careers that require precision and organization."]
+        },
+        {
+          "tag": "Scorpio",
+          "patterns": ["What's a good career for Scorpio?", "Job suggestions for Scorpio?"],
+          "responses": ["Scorpio thrives in careers that require intensity and focus, like investigation or research."]
+        }
       ]
     },
     {
       "tag": "daily_horoscope",
-      "patterns": ["daily horoscope", "today's horoscope", "daily predictions", "Sagittarius", "Capricorn", "Aquarius", "Pisces"],
+      "patterns": [
+        "What's today's horoscope?",
+        "Can you give me the daily predictions?",
+        "Tell me about today's zodiac predictions."
+      ],
       "responses": [
-        "Les Sagittaires peuvent s'attendre à une journée pleine d'opportunités. C'est le moment idéal pour explorer de nouvelles idées.",
-        "Les Capricornes devraient se concentrer sur leurs objectifs à long terme aujourd'hui. Votre détermination vous aidera à surmonter les obstacles."
+        "Today's horoscope varies for each sign. Sagittarius can expect new opportunities, while Capricorn should focus on long-term goals.",
+        "Daily horoscopes offer insights into your day based on your zodiac sign. Pisces might find today emotionally insightful."
+      ],
+      "subtags": [
+        {
+          "tag": "Sagittarius",
+          "patterns": ["What's today's horoscope for Sagittarius?", "Daily predictions for Sagittarius?"],
+          "responses": ["Sagittarius can expect an adventurous day with new opportunities."]
+        },
+        {
+          "tag": "Capricorn",
+          "patterns": ["What's today's horoscope for Capricorn?", "Daily predictions for Capricorn?"],
+          "responses": ["Capricorn should focus on long-term goals and discipline today."]
+        },
+        {
+          "tag": "Aquarius",
+          "patterns": ["What's today's horoscope for Aquarius?", "Daily predictions for Aquarius?"],
+          "responses": ["Aquarius may experience a burst of creativity, ideal for new projects."]
+        },
+        {
+          "tag": "Pisces",
+          "patterns": ["What's today's horoscope for Pisces?", "Daily predictions for Pisces?"],
+          "responses": ["Pisces might find today emotionally insightful and suitable for reflection."]
+        }
       ]
     },
     {
-      "tag": "personality_traits",
-      "patterns": ["traits", "characteristics", "personality", "zodiac", "Gemini", "Cancer", "Leo", "Virgo"],
+      "tag": "fallback",
+      "patterns": [
+        "I don't understand",
+        "Can you clarify?",
+        "What do you mean?",
+        "I'm confused",
+        "Can you explain?"
+      ],
       "responses": [
-        "Les Gémeaux sont connus pour leur adaptabilité et leur curiosité. Ils aiment la variété et la communication.",
-        "Les Cancers sont sensibles et émotionnels. Ils sont très attachés à leur famille et à leurs proches."
-      ]
-    },
-    {
-      "tag": "astrology_basics",
-      "patterns": ["astrology", "zodiac signs", "birth chart", "horoscope", "Taurus", "Aquarius", "Pisces"],
-      "responses": [
-        "Les signes du zodiaque sont déterminés par la position des étoiles au moment de votre naissance. Les Taureaux sont des signes de terre, tandis que les Verseaux sont des signes d'air.",
-        "Chaque signe du zodiaque a ses propres caractéristiques et influences. Les Poissons, par exemple, sont des signes d'eau et ont tendance à être très créatifs."
+        "I'm not sure I understand. Could you clarify your question?",
+        "I didn't get that. Could you be more specific?",
+        "I'm sorry, can you rephrase your question?",
+        "I'm here to help. Could you ask your question differently?"
       ]
     }
   ]
