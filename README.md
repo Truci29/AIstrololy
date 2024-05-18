@@ -4,12 +4,17 @@ Make an AI to give your Astrology
 
  ## Installation
  Sur le terminal, lancez : 
-``` pip install nltk  ```
-``` pip install tensorflow ```
+``` bash
+pip install nltk  
+pip install tensorflow 
+ ```
+
  Sur un terminal python :
 
-``` import nltk ```
-``` nltk.download() ```
+```python
+import nltk
+nltk.download() 
+```
 Vous devriez voir cette fenêtre apparaitre
 
 Allez sur File > Download
@@ -19,16 +24,24 @@ Allez sur File > Download
 
 ### Sur Linux
 #### Entrainement Automatique
-``` python3 ./training.py ```
+```bash
+python3 ./training.py
+```
 
-#### Entrainement Automatique
-``` python3 ./chatbot.py ```
+#### Utilisation
+```bash
+python3 ./chatbot.py
+```
 
 ### Sur Windows
 #### Entrainement Automatique
-``` python .\training.py ```
+```batch
+python3 .\training.py
+```
 
-#### Entrainement Automatique
-``` python .\chatbot.py ```
+#### Utilisation
+```batch
+python .\chatbot.py
+```
 
 
