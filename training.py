@@ -11,7 +11,6 @@ from tensorflow.keras.optimizers import SGD
 
 # Initialize components
 lemmatizer = WordNetLemmatizer()
-
 # Load dataset
 intents = json.loads(open("data.json").read())
 
@@ -23,23 +22,22 @@ ignore_letters = ["?", "!", ".", ","]
 
 # Extract patterns and classes, including sub-tags
 for intent in intents["intents"]:
-    # if "subtags" in intent:
-    #     # Process sub-tags
-    #     for subtag in intent["subtags"]:
-    #         for pattern in subtag["patterns"]:
-    #             word_list = word_tokenize(pattern)
-    #             words.extend(word_list)
-    #             documents.append((word_list, subtag["tag"]))
-    #             if subtag["tag"] not in classes:
-    #                 classes.append(subtag["tag"])
-    # else:
-        # Process main tag if no sub-tags
-        for pattern in intent["patterns"]:
-            word_list = word_tokenize(pattern)
-            words.extend(word_list)
-            documents.append((word_list, intent["tag"]))
-            if intent["tag"] not in classes:
-                classes.append(intent["tag"])
+    # Process main tag
+    for pattern in intent["patterns"]:
+        word_list = word_tokenize(pattern)
+        words.extend(word_list)
+        documents.append((word_list, intent["tag"]))
+        if intent["tag"] not in classes:
+            classes.append(intent["tag"])
+    # Process sub-tags if they exist
+    if "subtags" in intent:
+        for subtag in intent["subtags"]:
+            for pattern in subtag["patterns"]:
+                word_list = word_tokenize(pattern)
+                words.extend(word_list)
+                documents.append((word_list, subtag["tag"]))
+                if subtag["tag"] not in classes:
+                    classes.append(subtag["tag"])
 
 # Lemmatize and remove duplicates
 words = [lemmatizer.lemmatize(word.lower()) for word in words if word not in ignore_letters]

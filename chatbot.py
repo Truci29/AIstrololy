@@ -52,6 +52,7 @@ def predict_class(sentence):
 def get_combined_response(intents_list, intents_json):
     relevant_responses = []
     list_of_intents = intents_json["intents"]
+    main_tag_detected = False
 
     for result in intents_list:
         tag = result["intent"]
@@ -61,23 +62,45 @@ def get_combined_response(intents_list, intents_json):
         # Search for the intent in the JSON structure
         for intent in list_of_intents:
             if intent["tag"] == tag:
-                # if "subtags" in intent:
-                #     # Check for subtags and match the tag
-                #     for subtag in intent["subtags"]:
-                #         if subtag["tag"] == tag:
-                #             response = random.choice(subtag["responses"])
-                #             relevant_responses.append(response)
-                #             print(f"Adding response for subtag '{tag}': {response}")
-                # else:
+                if "subtags" in intent:
+                    main_tag_detected = True  # Indicate that the main tag is detected
+                    # Check for subtags and match the tag
+                    for subtag in intent["subtags"]:
+                        if subtag["tag"] == tag:
+                            response = random.choice(subtag["responses"])
+                            relevant_responses.append(response)
+                            print(f"Adding response for subtag '{tag}': {response}")
+                            break
+                    else:
+                        # If subtags exist but no matching subtag is found, use main tag's responses
+                        response = random.choice(intent["responses"])
+                        relevant_responses.append(response)
+                        print(f"Adding response for main tag '{tag}': {response}")
+                else:
                     # If no subtags, use the main tag's responses
                     response = random.choice(intent["responses"])
                     relevant_responses.append(response)
-                    #print(f"Adding response for main tag '{tag}': {response}")
+                    print(f"Adding response for main tag '{tag}': {response}")
+
+    # If main tag is not detected but subtags are, use subtag responses
+    if not main_tag_detected:
+        for result in intents_list:
+            tag = result["intent"]
+            for intent in list_of_intents:
+                if "subtags" in intent:
+                    for subtag in intent["subtags"]:
+                        if subtag["tag"] == tag:
+                            response = random.choice(subtag["responses"])
+                            relevant_responses.append(response)
+                            print(f"Adding response for subtag '{tag}': {response}")
+                            break
 
     combined_response = " ".join(relevant_responses)
     #print(f"Combined response: {combined_response}")
 
     return combined_response
+
+
 
 # Update the dataset with new data from feedback
 def update_dataset(feedback_storage, dataset_path="data.json"):
@@ -218,11 +241,14 @@ while True:
         print("Chatbot: Goodbye!")
         break
     
-    prediction = predict_class(message)
-    response = get_combined_response(prediction, intents)
+    # Predict the class of the message
+    predictions = predict_class(message)
+    
+    # Get the combined response based on the predictions
+    response = get_combined_response(predictions, intents)
 
-    # Double-check if response is valid
-    print(f"Chatbot: {response}")  # This should display the response
+    # Display the response to the user
+    print(f"Chatbot: {response}")  
 
     # Ask for feedback
     feedback = input("Was this helpful? (yes/no): ")
@@ -232,5 +258,5 @@ while True:
         feedback_storage.append({
             "question": message,
             "response": response,
-            "intent": prediction[0]["intent"]
+            "intent": predictions[0]["intent"]
         })
