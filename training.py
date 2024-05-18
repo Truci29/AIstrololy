@@ -23,16 +23,16 @@ ignore_letters = ["?", "!", ".", ","]
 
 # Extract patterns and classes, including sub-tags
 for intent in intents["intents"]:
-    if "subtags" in intent:
-        # Process sub-tags
-        for subtag in intent["subtags"]:
-            for pattern in subtag["patterns"]:
-                word_list = word_tokenize(pattern)
-                words.extend(word_list)
-                documents.append((word_list, subtag["tag"]))
-                if subtag["tag"] not in classes:
-                    classes.append(subtag["tag"])
-    else:
+    # if "subtags" in intent:
+    #     # Process sub-tags
+    #     for subtag in intent["subtags"]:
+    #         for pattern in subtag["patterns"]:
+    #             word_list = word_tokenize(pattern)
+    #             words.extend(word_list)
+    #             documents.append((word_list, subtag["tag"]))
+    #             if subtag["tag"] not in classes:
+    #                 classes.append(subtag["tag"])
+    # else:
         # Process main tag if no sub-tags
         for pattern in intent["patterns"]:
             word_list = word_tokenize(pattern)

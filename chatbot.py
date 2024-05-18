@@ -61,21 +61,21 @@ def get_combined_response(intents_list, intents_json):
         # Search for the intent in the JSON structure
         for intent in list_of_intents:
             if intent["tag"] == tag:
-                if "subtags" in intent:
-                    # Check for subtags and match the tag
-                    for subtag in intent["subtags"]:
-                        if subtag["tag"] == tag:
-                            response = random.choice(subtag["responses"])
-                            relevant_responses.append(response)
-                            print(f"Adding response for subtag '{tag}': {response}")
-                else:
+                # if "subtags" in intent:
+                #     # Check for subtags and match the tag
+                #     for subtag in intent["subtags"]:
+                #         if subtag["tag"] == tag:
+                #             response = random.choice(subtag["responses"])
+                #             relevant_responses.append(response)
+                #             print(f"Adding response for subtag '{tag}': {response}")
+                # else:
                     # If no subtags, use the main tag's responses
                     response = random.choice(intent["responses"])
                     relevant_responses.append(response)
-                    print(f"Adding response for main tag '{tag}': {response}")
+                    #print(f"Adding response for main tag '{tag}': {response}")
 
     combined_response = " ".join(relevant_responses)
-    print(f"Combined response: {combined_response}")
+    #print(f"Combined response: {combined_response}")
 
     return combined_response
 
@@ -172,20 +172,20 @@ def retrain_model():
     model.save("chatbot_model.model.keras")
 
 
-test_queries = [
-    "What's a good career for Virgo?", 
-    "Describe Virgo's personality.", 
-    "What's today's horoscope for Sagittarius?"
-]
+# test_queries = [
+#     "What's a good career for Virgo?", 
+#     "Describe Virgo's personality.", 
+#     "What's today's horoscope for Sagittarius?"
+# ]
 
-for query in test_queries:
-    prediction = predict_class(query)
-    response = get_combined_response(prediction, intents)
-    print(f"Query: {query}")
-    print(f"Prediction: {prediction}")
-    print(f"Response: {response}\n")
+# for query in test_queries:
+#     prediction = predict_class(query)
+#     response = get_combined_response(prediction, intents)
+#     print(f"Query: {query}")
+#     print(f"Prediction: {prediction}")
+#     print(f"Response: {response}\n")
 
-print(f"Vocabulary: {words}")
+# print(f"Vocabulary: {words}")
 
 # Example: Finding overlapping patterns in the dataset
 patterns = []
