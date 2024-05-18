@@ -3,114 +3,169 @@
     {
       "tag": "personality_traits",
       "patterns": [
-        "Tell me about zodiac personality traits.",
-        "Describe the personality of zodiac signs.",
-        "How do zodiac signs differ in personality?"
+        "Parle-moi des traits de personnalité des signes du zodiaque.",
+        "Décris la personnalité des signes du zodiaque.",
+        "Comment les signes du zodiaque diffèrent-ils en termes de personnalité?"
       ],
       "responses": [
-        "Each zodiac sign has unique personality traits. For example, Gemini is known for adaptability and curiosity.",
-        "Zodiac signs represent different characteristics. Cancer is sensitive and emotional, while Leo is confident and charismatic."
+        "Chaque signe du zodiaque a des traits de personnalité uniques. Par exemple, les Gémeaux sont connus pour leur adaptabilité et leur curiosité.",
+        "Les signes du zodiaque représentent des caractéristiques différentes. Le Cancer est sensible et émotionnel, tandis que le Lion est confiant et charismatique."
       ],
       "subtags": [
         {
-          "tag": "Gemini",
-          "patterns": ["What's Gemini like?", "Describe Gemini's personality."],
-          "responses": ["Gemini is adaptable and curious, enjoying variety and communication."]
+          "tag": "Gémeaux",
+          "patterns": [
+            "Comment sont les gémeaux?",
+            "Décris la personnalité des gémeaux."
+          ],
+          "responses": [
+            "Le gémeau est curieux et flexible, apprécie la compagnie des autres et déteste la monotonie."
+          ]
         },
         {
           "tag": "Cancer",
-          "patterns": ["What's Cancer like?", "Describe Cancer's personality."],
-          "responses": ["Cancer is sensitive and emotional, deeply attached to family and friends."]
+          "patterns": [
+            "What's Cancer like?",
+            "Describe Cancer's personality."
+          ],
+          "responses": [
+            "Cancer is sensitive and emotional, deeply attached to family and friends."
+          ]
         },
         {
-          "tag": "Leo",
-          "patterns": ["What's Leo like?", "Describe Leo's personality."],
-          "responses": ["Leo is confident and charismatic, often drawing attention in social settings."]
+          "tag": "Lion",
+          "patterns": [
+            "Comment sont les Lions?",
+            "Décris la personnalité des Lions."
+          ],
+          "responses": [
+            "Le Lion est confiant et charismatique, attirant souvent l'attention en société."
+          ]
         },
         {
-          "tag": "Virgo",
-          "patterns": ["What's Virgo like?", "Describe Virgo's personality."],
-          "responses": ["Virgo is practical and meticulous, with a strong sense of order and efficiency."]
+          "tag": "Vierge",
+          "patterns": [
+            "Comment sont les Vierges?",
+            "Décris la personnalité des Vierges."
+          ],
+          "responses": [
+            "La Vierge est pratique et méticuleuse, avec un grand sens de l'ordre et de l'efficacité."
+          ]
         }
       ]
     },
     {
-      "tag": "career_guidance",
+      "tag": "travail",
       "patterns": [
-        "Give me career guidance.",
-        "What kind of jobs suit zodiac signs?",
-        "Tell me about careers for zodiac signs."
+        "Donne-moi des conseils de carrière.",
+        "Quels types de métiers conviennent aux signes du zodiaque?",
+        "Parle-moi des carrières pour les signes du zodiaque."
       ],
       "responses": [
-        "Each zodiac sign has unique strengths for different careers. Leo is a natural leader, while Virgo is methodical and precise.",
-        "Zodiac signs have specific traits that can guide career choices. For example, Sagittarius thrives in adventurous roles."
+        "Chaque signe du zodiaque a des forces uniques pour différentes carrières. Le Lion est un leader naturel, tandis que la Vierge est méthodique et précise.",
+        "Les signes du zodiaque ont des traits spécifiques qui peuvent guider les choix de carrière. Par exemple, le Sagittaire s'épanouit dans des rôles aventureux."
       ],
       "subtags": [
         {
-          "tag": "Leo",
-          "patterns": ["What's a good career for Leo?", "Job suggestions for Leo?"],
-          "responses": ["Leo excels in roles that require leadership and confidence."]
+          "tag": "Lion",
+          "patterns": [
+            "Quelle est une bonne carrière pour le Lion?",
+            "Suggestions de métiers pour le Lion?"
+          ],
+          "responses": [
+            "Le Lion excelle dans les rôles nécessitant du leadership et de la confiance."
+          ]
         },
         {
-          "tag": "Virgo",
-          "patterns": ["What's a good career for Virgo?", "Job suggestions for Virgo?"],
-          "responses": ["Virgo is ideal for careers that require precision and organization."]
+          "tag": "Vierge",
+          "patterns": [
+            "Quelle est une bonne carrière pour la Vierge?",
+            "Suggestions de métiers pour la Vierge?"
+          ],
+          "responses": [
+            "La Vierge est idéale pour les carrières nécessitant précision et organisation."
+          ]
         },
         {
-          "tag": "Scorpio",
-          "patterns": ["What's a good career for Scorpio?", "Job suggestions for Scorpio?"],
-          "responses": ["Scorpio thrives in careers that require intensity and focus, like investigation or research."]
+          "tag": "Scorpion",
+          "patterns": [
+            "Quelle est une bonne carrière pour le Scorpion?",
+            "Suggestions de métiers pour le Scorpion?"
+          ],
+          "responses": [
+            "Le Scorpion s'épanouit dans des carrières nécessitant intensité et concentration, comme l'investigation ou la recherche."
+          ]
         }
       ]
     },
     {
-      "tag": "daily_horoscope",
+      "tag": "horoscope_quotidien",
       "patterns": [
-        "What's today's horoscope?",
-        "Can you give me the daily predictions?",
-        "Tell me about today's zodiac predictions."
+        "Quel est l'horoscope d'aujourd'hui?",
+        "Peux-tu me donner les prédictions quotidiennes?",
+        "Parle-moi des prédictions du zodiaque pour aujourd'hui."
       ],
       "responses": [
-        "Today's horoscope varies for each sign. Sagittarius can expect new opportunities, while Capricorn should focus on long-term goals.",
-        "Daily horoscopes offer insights into your day based on your zodiac sign. Pisces might find today emotionally insightful."
+        "L'horoscope d'aujourd'hui varie pour chaque signe. Le Sagittaire peut s'attendre à de nouvelles opportunités, tandis que le Capricorne devrait se concentrer sur ses objectifs à long terme.",
+        "Les horoscopes quotidiens offrent des aperçus de votre journée en fonction de votre signe du zodiaque. Les Poissons pourraient trouver la journée émotionnellement enrichissante."
       ],
       "subtags": [
         {
-          "tag": "Sagittarius",
-          "patterns": ["What's today's horoscope for Sagittarius?", "Daily predictions for Sagittarius?"],
-          "responses": ["Sagittarius can expect an adventurous day with new opportunities."]
+          "tag": "Sagittaire",
+          "patterns": [
+            "Quel est l'horoscope d'aujourd'hui pour le Sagittaire?",
+            "Prédictions quotidiennes pour le Sagittaire?"
+          ],
+          "responses": [
+            "Le Sagittaire peut s'attendre à une journée aventureuse avec de nouvelles opportunités."
+          ]
         },
         {
-          "tag": "Capricorn",
-          "patterns": ["What's today's horoscope for Capricorn?", "Daily predictions for Capricorn?"],
-          "responses": ["Capricorn should focus on long-term goals and discipline today."]
+          "tag": "Capricorne",
+          "patterns": [
+            "Quel est l'horoscope d'aujourd'hui pour le Capricorne?",
+            "Prédictions quotidiennes pour le Capricorne?"
+          ],
+          "responses": [
+            "Le Capricorne devrait se concentrer sur ses objectifs à long terme et sa discipline aujourd'hui."
+          ]
         },
         {
-          "tag": "Aquarius",
-          "patterns": ["What's today's horoscope for Aquarius?", "Daily predictions for Aquarius?"],
-          "responses": ["Aquarius may experience a burst of creativity, ideal for new projects."]
+          "tag": "Verseau",
+          "patterns": [
+            "Quel est l'horoscope d'aujourd'hui pour le Verseau?",
+            "Prédictions quotidiennes pour le Verseau?"
+          ],
+          "responses": [
+            "Le Verseau peut ressentir une poussée de créativité, idéale pour de nouveaux projets."
+          ]
         },
         {
-          "tag": "Pisces",
-          "patterns": ["What's today's horoscope for Pisces?", "Daily predictions for Pisces?"],
-          "responses": ["Pisces might find today emotionally insightful and suitable for reflection."]
+          "tag": "Poissons",
+          "patterns": [
+            "Quel est l'horoscope d'aujourd'hui pour les Poissons?",
+            "Prédictions quotidiennes pour les Poissons?"
+          ],
+          "responses": [
+            "Les Poissons pourraient trouver la journée émotionnellement enrichissante et propice à la réflexion."
+          ]
         }
       ]
     },
     {
       "tag": "fallback",
       "patterns": [
-        "I don't understand",
-        "Can you clarify?",
-        "What do you mean?",
-        "I'm confused",
-        "Can you explain?"
+        "Je ne comprends pas",
+        "Peux-tu clarifier?",
+        "Que veux-tu dire?",
+        "Je suis confus",
+        "Peux-tu expliquer?"
       ],
       "responses": [
-        "I'm not sure I understand. Could you clarify your question?",
-        "I didn't get that. Could you be more specific?",
-        "I'm sorry, can you rephrase your question?",
-        "I'm here to help. Could you ask your question differently?"
+        "Je ne suis pas sûr de comprendre. Pourriez-vous clarifier votre question?",
+        "Je n'ai pas compris. Pourriez-vous être plus précis?",
+        "Je suis désolé, pouvez-vous reformuler votre question?",
+        "Je suis là pour aider. Pourriez-vous poser votre question différemment?"
       ]
     }
   ]
